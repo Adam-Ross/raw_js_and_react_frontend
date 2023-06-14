@@ -8,8 +8,6 @@ dotenv.config()
 
 const PORT = process.env.PORT 
 
-
-
 // Create a new pool instance with your database connection details
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
