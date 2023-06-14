@@ -11,13 +11,9 @@ const PORT = process.env.PORT || 3001
 
 
 // Create a new pool instance with your database connection details
-// const pool = new Pool({
-//   user: 'garrettross',
-//   host: 'localhost',
-//   database: 'todo',
-//   password: '',
-//   port: 5432, 
-// });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL
+});
 
 
 const app = express();
