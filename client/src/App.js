@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import TodoInput from './components/TodoInput'
 import SingleTodo from './components/SingleTodo'
 import Todos from './components/Todos'
+import Title from './components/Title'
 import './App.css';
 
 
@@ -80,19 +81,23 @@ function App() {
   }
 
   if(singleTodo) {
-    return <SingleTodo singleTodo={singleTodo}
-      editTodo={editTodo}
-    />
+    return <div className="container">
+      <Title />
+      <SingleTodo singleTodo={singleTodo}
+        editTodo={editTodo}
+      />
+    </div>
   }
 
   return (
-    <>
+    <div className="container">
+      <Title />
       <TodoInput addTodo={addTodo}/>
       <Todos todos={todos}
       deleteTodo={deleteTodo}
       selectSingleTodo={selectSingleTodo}
       />
-    </>
+    </div>
   );
 }
 

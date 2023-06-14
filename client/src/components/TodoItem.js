@@ -4,12 +4,12 @@ import EditTodoButton from './EditTodoButton'
 const TodoItem = ({todo, deleteTodo,selectSingleTodo}) => {
     return (
         <>
-            <h1>{todo.todo_body}</h1>
+            <div className="todo">{todo.todo_body}</div>
             <DeleteTodoButton deleteTodo={deleteTodo}
-            id={todo.todo_id}
+            id={todo.id}
             />
             <EditTodoButton 
-            id={todo.todo_id}
+            id={todo.id}
             selectSingleTodo={selectSingleTodo}/>
         </>
     )   

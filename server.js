@@ -1,30 +1,36 @@
+
+
 const express = require('express');
 const { Pool } = require('pg');
+const dotenv = require('dotenv')
 const cors = require('cors')
+dotenv.config() 
+
+const PORT = process.env.PORT || 3001
 
 
 
 // Create a new pool instance with your database connection details
-const pool = new Pool({
-  user: 'garrettross',
-  host: 'localhost',
-  database: 'todo',
-  password: '',
-  port: 5432, // default PostgreSQL port
-});
+// const pool = new Pool({
+//   user: 'garrettross',
+//   host: 'localhost',
+//   database: 'todo',
+//   password: '',
+//   port: 5432, 
+// });
 
-// Create a new Express app
+
 const app = express();
 app.use(cors())
 
-// Parse JSON request bodies
+
 app.use(express.json());
 
 // Define routes for CRUD operations on todos
 app.get('/todos', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM todos');
-    res.json(result.rows);
+    res.json(result.rows).status(200)
   } catch (err) {
     console.error(err);
     res.status(500).send('Error fetching todos from database');
@@ -44,8 +50,9 @@ app.post('/todos', async (req, res) => {
 
 app.get('/todos/:id', async (req, res) => {
   const { id } = req.params;
+  
   try {
-    const result = await pool.query('SELECT * FROM todos WHERE todo_id = $1', [id]);
+    const result = await pool.query('SELECT * FROM todos WHERE id = $1', [id]);
     if (result.rowCount === 0) {
       res.status(404).send('Todo not found');
     } else {
@@ -61,9 +68,9 @@ app.put('/todos/:id', async (req, res) => {
   const { id } = req.params;
   const { todo_body } = req.body;
   try {
-    const result = await pool.query('UPDATE todos SET todo_body = $1 WHERE todo_id = $2 RETURNING *', [todo_body, id]);
+    const result = await pool.query('UPDATE todos SET todo_body = $1 WHERE id = $2 RETURNING *', [todo_body, id]);
     if (result.rowCount === 0) {
-      res.status(404).send('Todo not found');
+      res.status(404).send('todo is not found...');
     } else {
       res.json(result.rows[0]);
     }
@@ -76,7 +83,7 @@ app.put('/todos/:id', async (req, res) => {
 app.delete('/todos/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const result = await pool.query('DELETE FROM todos WHERE todo_id = $1 RETURNING *', [id]);
+    const result = await pool.query('DELETE FROM todos WHERE id = $1 RETURNING *', [id]);
     if (result.rowCount === 0) {
       res.status(404).send('Todo not found');
     } else {
@@ -89,7 +96,7 @@ app.delete('/todos/:id', async (req, res) => {
 });
 
 // Start the server
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log('Server started on port 3001');
 });
 

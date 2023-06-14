@@ -10,7 +10,7 @@ const SingleTodo = ({singleTodo, editTodo}) => {
     const handleSubmit = (e) => {
 
         e.preventDefault()
-        editTodo(singleTodo.todo_id, text)
+        editTodo(singleTodo.id, text)
     }
  
     return (

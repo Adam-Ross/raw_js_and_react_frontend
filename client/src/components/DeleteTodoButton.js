@@ -4,7 +4,7 @@ const DeleteTodoButton = ({id, deleteTodo}) => {
     }
 
     return (
-        <button onClick={handleClick} >Delete</button>
+        <button onClick={handleClick} className="subBtn">Delete</button>
     )
 }
 
