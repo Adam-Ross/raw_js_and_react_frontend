@@ -1,0 +1,101 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    background: #f4f4f4;
+}
+
+#todosContainer {
+    width: 90vw; 
+    margin: auto;
+    border: 1px solid red
+}
+
+.card {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%; 
+    margin: 2rem auto;
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.card h1 {
+    transition: color .5s ease;
+}
+
+
+.card h1:hover {
+    cursor: pointer;
+    color: red;
+}
+
+
+
+#singleTodoContainer {
+    display: none;
+    width: 90vw; 
+    margin: auto;
+    border: 1px solid red
+}
+
+#formInput {
+    display: block;
+    margin: 1rem auto;
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid aqua;
+    font-size: 3rem;
+
+}
+
+#formBtn {
+    display: block;
+    margin: 1rem auto;
+    color: #333;
+    width: 80%;
+    border: 5px solid aqua;
+    background: aqua;
+    font-size: 1rem;
+}
+
+#formInput:focus {
+    outline: none;
+}
+
+.btn {
+    background: #333;
+    color: #f4f4f4;
+    padding: .5rem 1rem;
+    border: none;
+    margin-top: 1rem;
+}
+
+.textInput {
+    width: 100%;
+    border: none; 
+    font-size: 2rem;
+    border-bottom: 1px solid #333;
+    margin: 1rem 0;
+}
+
+.marginRight {
+    margin-right: 1rem;
+}
+
+.toast {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #333;
+    font-size: 1rem;
+    width: 20vw;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    padding: 1rem;
+}
+
+.marginBottom {
+    margin-bottom: 1rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
